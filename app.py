@@ -123,27 +123,32 @@ highest_close_price
 highest_volume_traded = df[df['Volume'] == df['Volume'].max()]
 highest_volume_traded
 
-"""#Data PreProcessing
+# Data Preprocessing
+st.title("Data Preprocessing")
 
-Finding Missing Values
-"""
+# Show missing values
+st.subheader("Missing Values")
+st.write("Number of Missing Values:")
+st.write(df.isnull().sum())
 
-# df.isna
+# Display rows where 'Close' is null
+st.write("Rows where 'Close' is Null:")
+st.write(df[df['Close'].isnull()])
 
-df.isna()
+# Fill missing values with the mean
+st.write("Fill Missing Values with Mean:")
+df_filled = df.fillna(df.mean())
+st.write(df_filled)
 
-df.isnull().sum()
+# Interpolate missing values
+st.write("Interpolate Missing Values:")
+df_interpolated = df.interpolate()
+st.write(df_interpolated)
 
-null_values = df[df['Close'].isnull()]
-
-# Display the rows where 'Close' is null
-print(null_values)
-
-df.fillna(df.mean())
-
-df.interpolate()
-
-df=df.dropna()
+# Drop rows with missing values
+st.write("Drop Rows with Missing Values:")
+df_no_missing = df.dropna()
+st.write(df_no_missing)
 
 """#Applying Linear Regression"""
 from sklearn.model_selection import train_test_split
