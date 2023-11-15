@@ -1,8 +1,23 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# ... (other imports)
+
+# Data Preprocessing
+st.title("Data Preprocessing")
+
+# ... (previous code)
+
+# Applying Linear Regression
+st.title("Applying Linear Regression")
+
+# ... (previous code)
+
 
 st.title('MRF Stock Price Visulization and Simple Linear Regression Model')
 
@@ -151,9 +166,9 @@ df_no_missing = df.dropna()
 st.write(df_no_missing)
 
 """#Applying Linear Regression"""
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LinearRegression
+# from sklearn.metrics import mean_squared_error
 
 # Step 2: Data Preprocessing
 # For simplicity, let's consider 'Close' as the target variable and 'Open' as the feature
