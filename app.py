@@ -29,12 +29,13 @@ st.scatter_chart(df, x='Open', y='Close')
 
 # Graph 4: Histogram for 'Close Price'
 st.write("Graph 4: Histogram for Close Price")
-plt.hist(df['Close'], bins=100, edgecolor='black')
-st.pyplot()
+fig=plt.hist(df['Close'], bins=100, edgecolor='black')
+st.pyplot(fig)
 
 # Graph 5: Box plot for 'High'
 st.write("Graph 5: Box Plot for High Prices")
-st.box_plot(df['High'])
+fig=plt.box_plot(df['High'])
+st.pyplot(fig)
 
 # Graph 6: Pie Chart for 'Close Price' and 'Volume'
 st.write("Graph 6: Distribution of Volume by Close Price Range")
