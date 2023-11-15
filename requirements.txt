@@ -4,7 +4,3 @@ matplotlib
 seaborn
 streamlit
 scikit-learn
-sklearn
-train_test_split
-LinearRegression
-mean_squared_error
