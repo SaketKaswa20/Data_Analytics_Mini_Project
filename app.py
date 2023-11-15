@@ -29,7 +29,7 @@ st.scatter_chart(df, x='Open', y='Close')
 
 # Graph 4: Histogram for 'Close Price'
 st.write("Graph 4: Histogram for Close Price")
-st.hist(df['Close'], bins=100, edgecolor='black')
+plt.hist(df['Close'], bins=100, edgecolor='black')
 st.pyplot()
 
 # Graph 5: Box plot for 'High'
