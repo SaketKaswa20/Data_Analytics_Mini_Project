@@ -35,7 +35,7 @@ st.pyplot(fig)
 
 # Graph 5: Box plot for 'High'
 st.write("Graph 5: Box Plot for High Prices")
-fig=sns.box_plot(df['High'])
+fig=sns.boxplot(df['High'])
 st.pyplot(fig)
 
 # Graph 6: Pie Chart for 'Close Price' and 'Volume'
