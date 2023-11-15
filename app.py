@@ -33,16 +33,88 @@ fig, ax = plt.subplots()
 ax.hist(df['Close'], bins=100, edgecolor='black')
 st.pyplot(fig)
 
-# Graph 5: Box plot for 'High'
-st.write("Graph 5: Box Plot for High Prices")
-fig=sns.boxplot(df['High'])
-st.pyplot(fig)
+# # Graph 5: Box plot for 'High'
+# st.write("Graph 5: Box Plot for High Prices")
+# fig=sns.boxplot(df['High'])
+# st.pyplot(fig)
 
-# Graph 6: Pie Chart for 'Close Price' and 'Volume'
-st.write("Graph 6: Distribution of Volume by Close Price Range")
-volume_by_price_range = df.groupby('Price Range')['Volume'].sum()
-st.pie_chart(volume_by_price_range)
+# # Graph 6: Pie Chart for 'Close Price' and 'Volume'
+# st.write("Graph 6: Distribution of Volume by Close Price Range")
+# volume_by_price_range = df.groupby('Price Range')['Volume'].sum()
+# st.pie_chart(volume_by_price_range)
 
-# Graph 7: Violin plot for 'Adj Close'
-st.write("Graph 7: Violin Plot for Adj Close")
-st.violin_plot(df['Adj Close'])
+# # Graph 7: Violin plot for 'Adj Close'
+# st.write("Graph 7: Violin Plot for Adj Close")
+# st.violin_plot(df['Adj Close'])
+
+"""#Filtering Data by applying GroupBy
+
+Group by 'Series' and Calculate Maximum Volume:
+
+This groups the data by the 'Series' column and calculates the maximum volume for each series.
+"""
+
+max_volume_by_high = df.groupby('High')['Volume'].max()
+max_volume_by_high
+
+"""Group by 'Year' and 'Month' and Calculate Total Volume:
+
+This creates 'Year' and 'Month' columns from the 'Date' column, and then groups the data by year and month to calculate the total volume.
+"""
+
+df['Date'] = pd.to_datetime(df['Date'])
+df['Year'] = df['Date'].dt.year
+df['Month'] = df['Date'].dt.month
+total_turnover_by_year_month = df.groupby(['Year', 'Month'])['Volume'].sum()
+total_turnover_by_year_month
+
+"""Group by 'Year' and 'Month' and Calculate Average Close Price:
+
+This creates 'Year' and 'Month' columns from the 'Date' column and groups the data by year and month, calculating the average close price for each period.
+"""
+
+avg_close_by_year_month = df.groupby(['Year', 'Month'])['Close'].mean()
+avg_close_by_year_month
+
+"""Group by 'Year' and Calculate Total Volume:
+
+This creates a 'Year' column from the 'Date' column and groups the data by year, calculating the total volume for each year.
+"""
+
+total_volume_by_year = df.groupby('Year')['Volume'].sum()
+total_volume_by_year
+
+"""Group by 'Month' and Calculate Median Close Price:
+
+This creates a 'Month' column from the 'Date' column and groups the data by month, calculating the median close price for each month.
+"""
+
+df['Month'] = df['Date'].dt.month
+median_close_by_month = df.groupby('Month')['Close'].median()
+median_close_by_month
+
+"""#Filtering Data without using GroupBy
+
+Filter for Close Prices above 1000 and below 10000:
+"""
+
+filter_condition = (df['Close'] > 1000) & (df['Close'] < 10000)
+filtered_data = df[filter_condition]
+filtered_data
+
+"""Filter for Close Prices above 10000 and below 25000:"""
+
+filter_condition = (df['Close'] >= 10000) & (df['Close'] < 25000)
+filtered_data = df[filter_condition]
+filtered_data
+
+"""Filter to Calculate Highest Open Price:"""
+
+highest_open_price = df[df['Open'] == df['Open'].max()]
+highest_open_price
+
+"""Filter to Calculate Highest Close Price:"""
+
+highest_close_price = df[df['Close'] == df['Close'].max()]
+highest_close_price
+
